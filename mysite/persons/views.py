@@ -1,3 +1,4 @@
+from django.core.checks import messages
 from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.views import generic
@@ -38,7 +39,7 @@ def save(request):
     pub_date= date.today())
 
     p.save()
-    return render(request, 'persons/save.html', {'person' : p})
+    return render(request, 'persons/save.html', {'message' : 'The person has been saved successfully'})
 
 
 
@@ -61,8 +62,11 @@ def put(request, person_id):
 
     person.save()
 
-    return render(request, 'persons/save.html', {'person' : person})
+    return render(request, 'persons/save.html', {'message' : 'The person has been saved successfully'})
 
 
 def delete(request, person_id):
-    pass
+    Person.objects.filter(id=person_id).delete()
+    return render(request, 'persons/save.html', { 'message': 'The person was eliminated'})
+
+    

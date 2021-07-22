@@ -93,14 +93,14 @@
                     {% for person in latest_persons_list %}
                     <tr>
                         <td> <img class="rounded-circle" src="https://image.flaticon.com/icons/png/512/2922/2922688.png" width="50" height="50"> </td>
-                        <th scope="row">{{ forloop.counter }}</th>
+                        <th scope="row">{{ person.id }}</th>
                         <td>{{ person.name }}</td>
                         <td>{{ person.lastname }}</td>
                         <td>{{ person.tel }}</td>
                         <td>{{ person.dir }}</td>
                         <td>
                             <div class="btn btn-group">
-                                <button class="btn btn-danger" style="color: white;"><i class="fa fa-trash"></i></button>
+                                <a type="button" href="{% url 'persons:del' person.id %}" class="btn btn-danger" style="color: white;"><i class="fa fa-trash"></i></a>
                                 <a type="button" href="{% url 'persons:upd' person.id %}" class="btn btn-success" style="color: white;"><i class="fa fa-pencil"></i></a>
                                 <a type="button" href="{% url 'persons:detail' person.id %}" class="btn btn-primary" style="color: white;"><i class="fa fa-user"></i></a>
                             </div>
