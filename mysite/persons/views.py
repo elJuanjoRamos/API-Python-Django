@@ -1,9 +1,8 @@
-import persons
-from django.http import HttpResponseRedirect
 from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.views import generic
 from django.template import loader
+from datetime import date
 
 from .models import Person
 
@@ -25,3 +24,15 @@ def detail(request, person_id):
 def new(request):
     person = None
     return render(request, 'persons/form.html', {'person': person})
+
+def save(request):
+    
+
+
+    p = Person(name =request.POST['name'], 
+    lastname=request.POST['lastname'], 
+    tel=request.POST['tel'], 
+    dir=request.POST['dir'],
+    pub_date= date.today())
+    #p.save()
+    return render(request, 'persons/save.html', {'person' : p})

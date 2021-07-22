@@ -51,7 +51,7 @@
                         <a class="nav-link active" aria-current="page" href="/persons/">Persons</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="persons/new/">New</a>
+                        <a class="nav-link" href="new/">New</a>
                     </li>
                 </ul>
                 <form class="d-flex">
@@ -85,7 +85,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Lastname</th>
                         <th scope="col">Tel</th>
-                        <th scope="col">Dir</th>
+                        <th scope="col">Address</th>
                         <th scope="col">Options</th>
                     </tr>
                 </thead>
@@ -93,7 +93,7 @@
                     {% for person in latest_persons_list %}
                     <tr>
                         <td> <img class="rounded-circle" src="https://image.flaticon.com/icons/png/512/2922/2922688.png" width="50" height="50"> </td>
-                        <th scope="row">1</th>
+                        <th scope="row">{{ forloop.counter }}</th>
                         <td>{{ person.name }}</td>
                         <td>{{ person.lastname }}</td>
                         <td>{{ person.tel }}</td>

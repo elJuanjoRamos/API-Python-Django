@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>API</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/offcanvas-navbar/">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/5.0/examples/offcanvas-navbar/offcanvas.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+    <style>
+        .dummy-positioning {
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+        }
+
+        .success-icon {
+            display: inline-block;
+            width: 4em;
+            height: 4em;
+            font-size: 20px;
+            border-radius: 50%;
+            border: 4px solid #96df8f;
+            background-color: #fff;
+            position: relative;
+            overflow: hidden;
+            -webkit-transform-origin: center;
+            transform-origin: center;
+            -webkit-animation: showSuccess 180ms ease-in-out;
+            animation: showSuccess 180ms ease-in-out;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+
+        .success-icon__tip,
+        .success-icon__long {
+            display: block;
+            position: absolute;
+            height: 4px;
+            background-color: #96df8f;
+            border-radius: 10px;
+        }
+
+        .success-icon__tip {
+            width: 2.4em;
+            top: 2.15em;
+            left: 1.4em;
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+            -webkit-animation: tipInPlace 300ms ease-in-out;
+            animation: tipInPlace 300ms ease-in-out;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+            -webkit-animation-delay: 180ms;
+            animation-delay: 180ms;
+            visibility: hidden;
+        }
+
+        .success-icon__long {
+            width: 4em;
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            top: 1.85em;
+            left: 2.75em;
+            -webkit-animation: longInPlace 140ms ease-in-out;
+            animation: longInPlace 140ms ease-in-out;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+            visibility: hidden;
+            -webkit-animation-delay: 440ms;
+            animation-delay: 440ms;
+        }
+
+        @-webkit-keyframes showSuccess {
+            from {
+                -webkit-transform: scale(0);
+                transform: scale(0);
+            }
+
+            to {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+        }
+
+        @keyframes showSuccess {
+            from {
+                -webkit-transform: scale(0);
+                transform: scale(0);
+            }
+
+            to {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+        }
+
+        @-webkit-keyframes tipInPlace {
+            from {
+                width: 0em;
+                top: 0em;
+                left: -0.8em;
+            }
+
+            to {
+                width: 1.2em;
+                top: 2.15em;
+                left: 0.7em;
+                visibility: visible;
+            }
+        }
+
+        @keyframes tipInPlace {
+            from {
+                width: 0em;
+                top: 0em;
+                left: -0.8em;
+            }
+
+            to {
+                width: 1.2em;
+                top: 2.15em;
+                left: 0.7em;
+                visibility: visible;
+            }
+        }
+
+        @-webkit-keyframes longInPlace {
+            from {
+                width: 0em;
+                top: 2.55em;
+                left: 1.6em;
+            }
+
+            to {
+                width: 2em;
+                top: 1.85em;
+                left: 1.375em;
+                visibility: visible;
+            }
+        }
+
+        @keyframes longInPlace {
+            from {
+                width: 0em;
+                top: 2.55em;
+                left: 1.6em;
+            }
+
+            to {
+                width: 2em;
+                top: 1.85em;
+                left: 1.375em;
+                visibility: visible;
+            }
+        }
+    </style>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">API Persons</a>
+            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/persons/">Persons</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+    <main>
+        <br><br>
+        <div class="text-center">
+            <h2 style="color:#0fad00">Success</h2>
+            <div class="success-icon">
+                <div class="success-icon__tip"></div>
+                <div class="success-icon__long"></div>
+            </div>
+            <p style="font-size:20px;color:#5C5C5C;"> The person <strong>{{ person.name }} {{ person.lastname }}</strong> has been saved successfully</p>
+            <a href="/persons/" class="btn btn-success">Ok</a>
+
+        </div>
+
+    </main>
+
+
+
+    <script src="https://getbootstrap.com/docs/5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://getbootstrap.com/docs/5.0/examples/offcanvas-navbar/offcanvas.js"></script>
+</body>
+
+</html>
